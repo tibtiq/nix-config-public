@@ -10,7 +10,7 @@ curl \
 
 # add ssh keys from github
 GITHUB_USERNAME='tibtiq'
-SSH_KEYS=$(curl -s https://github.com/${GITHUB_USERNAME}.keys | sed 's/.*/        "&",/')
+SSH_KEYS=$(curl -s https://github.com/${GITHUB_USERNAME}.keys | sed 's/.*/        "&"/')
 sed -i '/"SSH_KEYS"/{
     r /dev/stdin
     d
@@ -19,7 +19,6 @@ sed -i '/"SSH_KEYS"/{
 EOF
 # fix issues with previous sed
 sed -i 's/\"        \"/        \"/' ${NIX_CONFIG_PATH}
-sed -i 's/\",\"/\",/' ${NIX_CONFIG_PATH}
 
 printf "Do you want to rebuild nix? (y/N): "
 read -r answer

@@ -20,3 +20,9 @@ EOF
 # fix issues with previous sed
 sed -i 's/\"        \"/        \"/' ${NIX_CONFIG_PATH}
 sed -i 's/\",\"/\",/' ${NIX_CONFIG_PATH}
+
+printf "Do you want to rebuild nix? (y/N): "
+read -r answer
+if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
+  sudo nix-channel --update && sudo nixos-rebuild switch --upgrade
+fi

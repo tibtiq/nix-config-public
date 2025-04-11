@@ -19,6 +19,7 @@ sed -i '/"SSH_KEYS"/{
 EOF
 # fix issues with previous sed
 sed -i 's/\"        \"/        \"/' ${NIX_CONFIG_PATH}
+sed -i 's/\"\"/\"/' ${NIX_CONFIG_PATH}
 
 printf "Do you want to rebuild nix? (y/N): "
 read -r answer

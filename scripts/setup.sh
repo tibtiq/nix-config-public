@@ -21,6 +21,7 @@ EOF
 sed -i 's/\"        \"/        \"/' ${NIX_CONFIG_PATH}
 sed -i 's/\"\"/\"/' ${NIX_CONFIG_PATH}
 
+# todo fix this prompt. the script isn't waiting
 printf "Do you want to rebuild nix? (y/N): "
 read -r answer
 if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then

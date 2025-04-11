@@ -9,7 +9,6 @@
   user = "tibtiq";
   password = "somepass";
 
-  timeZone = "America/New_York";
   defaultLocale = "en_US.UTF-8";
 in {
   imports = [
@@ -25,8 +24,6 @@ in {
     git
     tmux
   ];
-
-  time.timeZone = timeZone;
 
   i18n = {
     defaultLocale = defaultLocale;

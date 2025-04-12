@@ -11,12 +11,10 @@ curl \
 # add ssh keys from github
 GITHUB_USERNAME='tibtiq'
 SSH_KEYS=$(curl -s https://github.com/${GITHUB_USERNAME}.keys | sed 's/.*/        "&"/')
-sed -i '/"SSH_KEYS"/{
+echo "$SSH_KEYS" | sed -i '/"SSH_KEYS"/{
     r /dev/stdin
     d
-}' ${NIX_CONFIG_PATH} <<EOF
-"$SSH_KEYS"
-EOF
+}' "${NIX_CONFIG_PATH}"
 # fix issues with previous sed
 sed -i 's/\"        \"/        \"/' ${NIX_CONFIG_PATH}
 sed -i 's/\"\"/\"/' ${NIX_CONFIG_PATH}

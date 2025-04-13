@@ -20,9 +20,9 @@ in {
   networking.hostName = hostname;
 
   environment.systemPackages = with pkgs; [
-    vim
-    git
-    tmux
+    vim   # text editor
+    git   # source version control
+    tmux  # tui for git
   ];
 
   i18n = {

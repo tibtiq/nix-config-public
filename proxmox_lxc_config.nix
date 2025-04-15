@@ -8,6 +8,10 @@
   hostname = "nixos";
   user = "tibtiq";
   password = "somepass";
+  ssh_keys = builtins.fetchurl {
+    url = "https://github.com/tibtiq.keys";
+    sha256 = "11jrd77llmp191q1fjkh384lhb68qgjn387qx0clp19ysz9mxkwr";
+  };
 
   defaultLocale = "en_US.UTF-8";
 in {
@@ -45,8 +49,8 @@ in {
     users."${user}" = {
       isNormalUser = true;
       password = password;
-      openssh.authorizedKeys.keys = [
-        "SSH_KEYS"
+      openssh.authorizedKeys.keyFiles = [
+        ssh_keys
       ];
       extraGroups = ["wheel"];
     };
